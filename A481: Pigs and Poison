@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+int minPigs(int buckets, int minutesToDie, int minutesToTest) {
+    int tests = minutesToTest / minutesToDie + 1;
+    int pigs = ceil(log(buckets) / log(tests));
+
+    return pigs;
+}
+
+int main() {
+
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */    
+    int buckets, minutesToDie, minutesToTest;
+    scanf("%d %d %d", &buckets, &minutesToDie, &minutesToTest);
+    int result = minPigs(buckets, minutesToDie, minutesToTest);
+    printf("%d\n", result);
+    return 0;
+}
