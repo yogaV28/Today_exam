@@ -1,0 +1,45 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int minCandies(vector<int>& ratings) {
+    int n = ratings.size();
+    vector<int> candies(n, 1);
+    for (int i = 1; i < n; i++) {
+        if (ratings[i] > ratings[i - 1]) {
+            candies[i] = candies[i - 1] + 1;
+        }
+    }
+    for (int i = n - 2; i >= 0; i--) {
+        if (ratings[i] > ratings[i + 1]) {
+            candies[i] = max(candies[i], candies[i + 1] + 1);
+        }
+    }
+    int totalCandies = 0;
+    for (int i = 0; i < n; i++) {
+        totalCandies += candies[i];
+    }
+
+    return totalCandies;
+}
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+    int n;
+    cin >> n;
+
+    vector<int> ratings(n);
+    for (int i = 0; i < n; i++) {
+        cin >> ratings[i];
+    }
+
+    int result = minCandies(ratings);
+
+    cout << result << endl;
+
+    return 0;
+}
+
+
