@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+int treasure_hunt_sum(int n, int arr[]) {
+    int sum_of_positive_integers = 0;
+
+    // Iterate through the array
+    for (int i = 0; i < n; i++) {
+        // Check if the number is positive
+        if (arr[i] > 0) {
+            // Add the positive number to the sum
+            sum_of_positive_integers += arr[i];
+        }
+    }
+
+    // Return the sum as the output
+    return sum_of_positive_integers;
+}
+
+int main() {
+    // Read the value of N
+    int n;
+    scanf("%d", &n);
+
+    // Declare an array of integers
+    int arr[n];
+
+    // Read the array of integers
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Call the function with the provided inputs
+    int result = treasure_hunt_sum(n, arr);
+
+    // Print the result as the output
+    printf("%d\n", result);
+
+    return 0;
+}
+
