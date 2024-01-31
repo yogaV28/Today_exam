@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+
+    int length, breadth;
+    scanf("%d %d", &length, &breadth);
+
+    int area = length * breadth;
+    printf( "%d\n", area);
+
+    return 0;
+}
