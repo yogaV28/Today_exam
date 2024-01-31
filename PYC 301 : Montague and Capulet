@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+void checkAlphabetsCoverage(char sentence[]) {
+
+    char lowercaseSet[] = "abcdefghijklmnopqrstuvwxyz";
+    char uppercaseSet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    int julietSet[26] = {0};
+    int romeoSet[26] = {0};
+    for (int i = 0; sentence[i] != '\0'; i++) {
+        if (isalpha(sentence[i])) {
+            if (islower(sentence[i])) {
+                romeoSet[sentence[i] - 'a'] = 1;
+            } else if (isupper(sentence[i])) {
+                julietSet[sentence[i] - 'A'] = 1;
+            }
+        }
+    }
+    int allLettersRead = 1;
+    for (int i = 0; i < 26; i++) {
+        if (!julietSet[i] && !romeoSet[i]) {
+            allLettersRead = 0;
+            break;
+        }
+    }
+    if (allLettersRead) {
+        printf("France\n");
+    } else {
+        printf("Italy\n");
+    }
+}
+
+int main() {
+    char sentence[1000];
+    
+    fgets(sentence, sizeof(sentence), stdin);
+    checkAlphabetsCoverage(sentence);
+
+    return 0;
+}
+
