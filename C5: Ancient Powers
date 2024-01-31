@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+int findSmallest(int rows, int columns, int matrix[rows][columns]) {
+    int smallestElement = matrix[0][0];
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            if (matrix[i][j] < smallestElement) {
+                smallestElement = matrix[i][j];
+            }
+        }
+    }
+    return smallestElement;
+}
+int main() {
+
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    int rows, columns;
+    scanf("%d %d", &rows, &columns);
+    int matrix[rows][columns];
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+    int result = findSmallest(rows, columns, matrix);
+    printf("%d\n", result);
+    return 0;
+}
